@@ -1,0 +1,71 @@
+<h3>Lista Obecności </h3>
+
+<div class="example-container">
+  <mat-form-field class="subjectSelect">
+    <mat-select [(value)]="selected" placeholder="Wybierz zajęcia">
+      <mat-option value="pit">Przedsiębiorczość w IT</mat-option>
+      <mat-option value="pr">Przetwarzanie Równoległe</mat-option>
+    </mat-select>   
+  </mat-form-field>
+
+
+  <mat-form-field class="subjectSelect" *ngIf="selected == 'pit'">
+    <mat-select placeholder="Wybierz datę zajęć" [(value)]="pitGroupSelected">
+      <mat-option value="pitSelection">Poniedziałek 3.12 godz. 11:45, grupa I3</mat-option>
+      <mat-option value="pitSelection">Poniedziałek 10.12 godz. 11:45, grupa I3</mat-option>
+      <mat-option value="pitSelection">Poniedziałek 17.12 godz. 11:45, grupa I3</mat-option>
+      <mat-option value="pitSelection">Poniedziałek 7.01 godz. 11:45, grupa I3</mat-option>
+      <mat-option value="pitSelection">Poniedziałek 14.01 godz. 11:45, grupa I3</mat-option>
+      <mat-option value="pitSelection">Poniedziałek 21.01 godz. 11:45, grupa I3</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="subjectSelect" *ngIf="selected == 'pr'">
+    <mat-select placeholder="Wybierz datę zajęć" [(value)]="prGroupSelected">
+      <mat-option value="prSelection">Środa 5.12 godz. 9:30, grupa I1</mat-option>
+      <mat-option value="prSelection">Środa 12.12 godz. 9:30, grupa I1</mat-option>
+      <mat-option value="prSelection">Środa 19.12 godz. 9:30, grupa I1</mat-option>
+      <mat-option value="prSelection">Środa 9.01 godz. 9:30, grupa I1</mat-option>
+      <mat-option value="prSelection">Środa 16.01 godz. 9:30, grupa I1</mat-option>
+      <mat-option value="prSelection">Środa 23.01 godz. 9:30, grupa I1</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+    <button mat-button *ngIf = "pitGroupSelected == 'pitSelection' && selected == 'pit' || 
+    prGroupSelected == 'prSelection' && selected == 'pr'">Zapisz i wyślij</button>
+
+  <mat-list *ngIf="pitGroupSelected == 'pitSelection' && selected == 'pit'">
+      <mat-list-item *ngFor="let student of pitStudents">
+        {{student}} 
+        <mat-button-toggle-group class="presenceSelect" name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle value="present">Obecny</mat-button-toggle>
+          <mat-button-toggle value="late">Spóźniony</mat-button-toggle>
+          <mat-button-toggle value="late">Nieobecny</mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+    
+    
+    
+    
+    <mat-list *ngIf="prGroupSelected == 'prSelection' && selected == 'pr'">
+        <mat-list-item *ngFor="let student of prStudents">
+          {{student}} 
+          <mat-button-toggle-group class="presenceSelect" name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="present">Obecny</mat-button-toggle>
+            <mat-button-toggle value="late">Spóźniony</mat-button-toggle>
+            <mat-button-toggle value="late">Nieobecny</mat-button-toggle>
+          </mat-button-toggle-group>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+
+
+
+</div>
+
+
+
+  

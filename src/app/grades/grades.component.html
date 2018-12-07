@@ -1,0 +1,110 @@
+<h3>Oceny </h3>
+
+<div class="example-container">
+    <mat-form-field class="subjectSelect">
+      <mat-select [(value)]="selected" placeholder="Wybierz zajęcia">
+        <mat-option value="pit">Przedsiębiorczość w IT</mat-option>
+        <mat-option value="pr">Przetwarzanie Równoległe</mat-option>
+      </mat-select>   
+    </mat-form-field>
+  
+  <br>
+    <mat-form-field class="subjectSelect" *ngIf="selected == 'pit'">
+      <mat-select placeholder="Wybierz datę zajęć" [(value)]="pitGroupSelected">
+        <mat-option value="pitSelectionI3">Poniedziałek godz. 11:45, grupa I3</mat-option>
+        <mat-option value="pitSelectionI2">Wtorek godz. 13:30, grupa I2</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="subjectSelect" *ngIf="selected == 'pr'">
+      <mat-select placeholder="Wybierz datę zajęć" [(value)]="prGroupSelected">
+        <mat-option value="prSelection">Środa godz. 9:30, grupa I1</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+    
+    <mat-form-field class="subjectSelect" *ngIf="selected == 'pit'">
+        <mat-select placeholder="Wybierz nazwę ocen" [(value)]="gradeName">
+          <mat-option value="name">Projekt aplikacji</mat-option>
+          <mat-option value="name">Prezentacja</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="subjectSelect" *ngIf="selected == 'pr'">
+          <mat-select placeholder="Wybierz nazwę ocen" [(value)]="gradeName">
+            <mat-option value="name">OpenMP</mat-option>
+            <mat-option value="name">CUDA</mat-option>
+            <mat-option value="name">Egzamin</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    <br>
+    <button mat-button *ngIf = "pitGroupSelected == 'pitSelectionI3' && selected == 'pit' && gradeName == 'name' || 
+    pitGroupSelected == 'pitSelectionI2' && selected == 'pit' && gradeName == 'name' ||
+    prGroupSelected == 'prSelection' && selected == 'pr' && gradeName == 'name'">Zapisz i wyślij</button>
+  
+    <mat-list *ngIf="pitGroupSelected == 'pitSelectionI3' && selected == 'pit' && gradeName == 'name'">
+        <mat-list-item *ngFor="let student of pitStudentsI3">
+          {{student}} 
+          <mat-form-field class = "presenceSelect">
+              <mat-select>
+                <mat-option>None</mat-option>
+                <mat-option value="option1">2</mat-option>
+                <mat-option value="option2">2.5</mat-option>
+                <mat-option value="option3">3</mat-option>
+                <mat-option value="option3">3.5</mat-option>
+                <mat-option value="option3">4</mat-option>
+                <mat-option value="option3">4.5</mat-option>
+                <mat-option value="option3">5</mat-option>
+              </mat-select>
+            </mat-form-field>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+
+      <mat-list *ngIf="pitGroupSelected == 'pitSelectionI2' && selected == 'pit' && gradeName == 'name'">
+          <mat-list-item *ngFor="let student of pitStudentsI2">
+            {{student}} 
+            <mat-form-field class = "presenceSelect">
+                <mat-select>
+                  <mat-option>None</mat-option>
+                  <mat-option value="option1">2</mat-option>
+                  <mat-option value="option2">2.5</mat-option>
+                  <mat-option value="option3">3</mat-option>
+                  <mat-option value="option3">3.5</mat-option>
+                  <mat-option value="option3">4</mat-option>
+                  <mat-option value="option3">4.5</mat-option>
+                  <mat-option value="option3">5</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      
+      
+      
+      
+      <mat-list *ngIf="prGroupSelected == 'prSelection' && selected == 'pr' && gradeName == 'name'">
+          <mat-list-item *ngFor="let student of prStudents">
+            {{student}} 
+            <mat-form-field class = "presenceSelect">
+                <mat-select>
+                  <mat-option>None</mat-option>
+                  <mat-option value="option1">2</mat-option>
+                  <mat-option value="option2">2.5</mat-option>
+                  <mat-option value="option3">3</mat-option>
+                  <mat-option value="option3">3.5</mat-option>
+                  <mat-option value="option3">4</mat-option>
+                  <mat-option value="option3">4.5</mat-option>
+                  <mat-option value="option3">5</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+  
+  
+  
+  </div>
+  

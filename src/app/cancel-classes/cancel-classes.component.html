@@ -1,0 +1,56 @@
+<h3>Odwoływanie zajęć</h3>
+
+
+<div class="example-container">
+    <mat-form-field class="subjectSelect">
+      <mat-select [(value)]="selected" placeholder="Wybierz zajęcia">
+        <mat-option value="pit">Przedsiębiorczość w IT</mat-option>
+        <mat-option value="pr">Przetwarzanie Równoległe</mat-option>
+      </mat-select>   
+    </mat-form-field>
+  
+    <br>
+
+    <mat-form-field class="subjectSelect" *ngIf="selected == 'pit'">
+      <mat-select placeholder="Wybierz datę zajęć" [(value)]="pitGroupSelected">
+        <mat-option value="pitSelection">Poniedziałek 3.12 godz. 11:45, grupa I3</mat-option>
+        <mat-option value="pitSelection">Poniedziałek 10.12 godz. 11:45, grupa I3</mat-option>
+        <mat-option value="pitSelection">Poniedziałek 17.12 godz. 11:45, grupa I3</mat-option>
+        <mat-option value="pitSelection">Poniedziałek 7.01 godz. 11:45, grupa I3</mat-option>
+        <mat-option value="pitSelection">Poniedziałek 14.01 godz. 11:45, grupa I3</mat-option>
+        <mat-option value="pitSelection">Poniedziałek 21.01 godz. 11:45, grupa I3</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="subjectSelect" *ngIf="selected == 'pr'">
+      <mat-select placeholder="Wybierz datę zajęć" [(value)]="prGroupSelected">
+        <mat-option value="prSelection">Środa 5.12 godz. 9:30, grupa I1</mat-option>
+        <mat-option value="prSelection">Środa 12.12 godz. 9:30, grupa I1</mat-option>
+        <mat-option value="prSelection">Środa 19.12 godz. 9:30, grupa I1</mat-option>
+        <mat-option value="prSelection">Środa 9.01 godz. 9:30, grupa I1</mat-option>
+        <mat-option value="prSelection">Środa 16.01 godz. 9:30, grupa I1</mat-option>
+        <mat-option value="prSelection">Środa 23.01 godz. 9:30, grupa I1</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <br>
+
+
+
+    <mat-form-field class="subjectSelect" *ngIf = "pitGroupSelected == 'pitSelection' && selected == 'pit' || 
+      prGroupSelected == 'prSelection' && selected == 'pr'">
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMaxRows="10" placeholder="Dodatkowa informacja"></textarea>
+    </mat-form-field>
+
+  
+    <br>
+
+      <button mat-button *ngIf = "pitGroupSelected == 'pitSelection' && selected == 'pit' || 
+      prGroupSelected == 'prSelection' && selected == 'pr'">Wyślij informację</button>
+  
+  </div>
+  
+  
+  
+    
+  

@@ -1,0 +1,13 @@
+.subjectSelect{
+    width: 400px;
+}
+
+.presenceSelect{
+    position: absolute;
+    right: 0%;
+    width: 50px;
+}
+
+.mat-button{
+    background-color: lightskyblue !important;
+}
